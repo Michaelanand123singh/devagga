@@ -132,9 +132,15 @@ const CollaborationSection = () => {
               key={index}
               animation="fadeUp"
               delay={index * 0.2}
-              className="bg-dark-light p-8 rounded-lg border border-gray-700 hover:border-primary-light transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 group"
+              className="bg-dark-light p-8 rounded-lg relative overflow-hidden transition-all duration-300 group"
             >
-              <div className="flex flex-col items-center text-center">
+              {/* Colorful border glow effect - created with pseudo-element */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary via-secondary to-primary rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+              
+              {/* Inner content container */}
+              <div className="absolute inset-px bg-dark-light rounded-lg z-10"></div>
+              
+              <div className="relative z-20 flex flex-col items-center text-center">
                 <div className="text-primary-light mb-6 transform group-hover:scale-110 transition-transform duration-300">
                   {item.icon}
                 </div>

@@ -9,28 +9,28 @@ const servicesData = [
     title: "Custom Character Animation",
     description: "Bring your characters to life with fluid, expressive animation tailored to your brand's personality and story needs.",
     icon: "🎭",
-    image: "/assets/images/services/character-animation.jpg"
+    src: "/Character2.png" // Fixed space in filename
   },
   {
     id: 2,
     title: "Motion Graphics & VFX",
     description: "Enhance your visual storytelling with dynamic motion graphics and stunning visual effects that capture attention.",
     icon: "✨",
-    image: "/assets/images/services/motion-graphics.jpg"
+    src: "/Character.png"
   },
   {
     id: 3,
     title: "Explainer & Educational Videos",
     description: "Communicate complex ideas with clarity through engaging animated explainers that educate and inspire your audience.",
     icon: "🎓",
-    image: "/assets/images/services/explainer-video.jpg"
+    src: "/assets/images/services/explainer-video.jpg"
   },
   {
     id: 4,
     title: "Commercial & Marketing Animation",
     description: "Elevate your marketing campaigns with eye-catching animations that showcase your products and services.",
     icon: "📈",
-    image: "/assets/images/services/commercial-animation.jpg"
+    src: "/assets/images/services/commercial-animation.jpg"
   }
 ]
 
@@ -91,7 +91,7 @@ const ServicesOverview = () => {
                 >
                   <div className="h-64 relative">
                     <img 
-                      src={activeService.image} 
+                      src={activeService.src} // Changed from activeService.image to activeService.src
                       alt={activeService.title} 
                       className="w-full h-full object-cover"
                     />

@@ -1,9 +1,53 @@
 import AnimatedSection from '../common/AnimatedSection'
+import { useEffect, useRef } from 'react'
 
 const AboutUs = () => {
+  const sectionRef = useRef(null)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+
+    // Create animated gradient effect
+    const handleMouseMove = (e) => {
+      const { left, top, width, height } = section.getBoundingClientRect()
+      const x = (e.clientX - left) / width
+      const y = (e.clientY - top) / height
+      
+      section.style.backgroundImage = `
+        radial-gradient(
+          circle at ${x * 100}% ${y * 100}%,
+rgb(106, 73, 176) 0%,
+rgb(24, 17, 43) 50%,
+          #0f172a 100%
+        )
+      `
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [])
+
   return (
-    <section className="py-20 bg-dark-light">
-      <div className="container mx-auto px-4">
+    <section 
+      ref={sectionRef}
+      className="py-20 bg-dark-light relative overflow-hidden transition-all duration-500 ease-out"
+      style={{
+        backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 1) 50%, rgba(15, 23, 42, 0.95) 100%)',
+        backgroundSize: '100% 100%',
+      }}
+    >
+      {/* Subtle animated background elements */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute -top-10 -left-10 w-64 h-64 rounded-full bg-primary-dark blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-primary blur-3xl animate-pulse" 
+             style={{animationDuration: '8s', animationDelay: '1s'}}></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <AnimatedSection animation="fadeUp">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
             Who We Are: A Passion for Storytelling and Cutting-Edge Tech
@@ -30,9 +74,9 @@ const AboutUs = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fadeLeft" delay={0.4}>
-            <div className="relative rounded-lg overflow-hidden shadow-xl h-[400px]">
+            <div className="relative rounded-lg overflow-hidden shadow-xl h-96">
               <img 
-                src="/assets/images/team/team-collaboration.jpg" 
+                src="/about.jpg" 
                 alt="Our team collaborating" 
                 className="w-full h-full object-cover"
               />

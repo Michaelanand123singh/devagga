@@ -27,11 +27,11 @@ const AnimatedSection = ({
       visible: { opacity: 1, y: 0, transition: { duration } }
     },
     fadeLeft: {
-      hidden: { opacity: 0, x: 30 },
+      hidden: { opacity: 0, x: 40 },
       visible: { opacity: 1, x: 0, transition: { duration } }
     },
     fadeRight: {
-      hidden: { opacity: 0, x: -30 },
+      hidden: { opacity: 0, x: -40 },
       visible: { opacity: 1, x: 0, transition: { duration } }
     },
     scale: {

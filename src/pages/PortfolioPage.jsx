@@ -42,7 +42,7 @@ const PortfolioPage = () => {
           </AnimatedSection>
           
           <AnimatedSection animation="fadeUp" delay={0.4}>
-            <PortfolioGrid portfolio={filteredPortfolio} />
+            <PortfolioGrid items={filteredPortfolio} />
           </AnimatedSection>
         </div>
       </section>

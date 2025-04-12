@@ -1,49 +1,67 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import ProjectModal from './ProjectModal'
 
 const PortfolioItem = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
+  if (!item) return null;
   
   return (
     <>
-      <div 
-        className="relative group overflow-hidden rounded-lg cursor-pointer h-64 bg-dark-light"
-        onClick={openModal}
+      <motion.div 
+        className="bg-dark-light rounded-lg overflow-hidden cursor-pointer group"
+        whileHover={{ y: -10 }}
+        onClick={() => setIsModalOpen(true)}
       >
-        {/* Image */}
-        <img 
-          src={item.thumbnail} 
-          alt={item.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <h3 className="text-xl font-display font-semibold text-white">{item.title}</h3>
-          <p className="text-sm text-gray-300 mt-1">{item.category}</p>
+        {/* Thumbnail */}
+        <div className="relative h-48 md:h-56 lg:h-64 overflow-hidden">
+          <img 
+            src={item.image || '/api/placeholder/400/320'} 
+            alt={item.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          {/* Category Tag */}
+          <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-full text-xs font-medium text-white">
+            {item.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+          </div>
         </div>
         
-        {/* Play button for videos */}
-        {item.type === 'video' && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-14 h-14 rounded-full bg-primary/80 text-white flex items-center justify-center group-hover:bg-primary transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+        {/* Content */}
+        <div className="p-4">
+          <h3 className="text-lg font-bold mb-1 transition-colors group-hover:text-primary-light">
+            {item.title}
+          </h3>
+          {item.client && (
+            <p className="text-sm text-gray-400 mb-2">Client: {item.client}</p>
+          )}
+          
+          {/* Tags */}
+          {item.tags && item.tags.length > 0 && (
+            <div className="flex flex-wrap gap-1 mt-3">
+              {item.tags.slice(0, 3).map((tag, index) => (
+                <span 
+                  key={index}
+                  className="text-xs bg-dark rounded-full px-2 py-1 text-gray-400"
+                >
+                  {tag}
+                </span>
+              ))}
+              {item.tags.length > 3 && (
+                <span className="text-xs bg-dark rounded-full px-2 py-1 text-gray-400">
+                  + {item.tags.length - 3} more
+                </span>
+              )}
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </motion.div>
       
-      {/* Modal */}
+      {/* Project Modal */}
       <ProjectModal 
-        isOpen={isModalOpen} 
-        onClose={closeModal} 
-        project={item} 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        project={item}
       />
     </>
   )

@@ -39,7 +39,7 @@ const Hero = () => {
           >
             <div className="relative h-[400px] w-full lg:h-[500px] rounded-lg overflow-hidden shadow-2xl">
               <img 
-                src="/assets/images/portfolio/city-animation.jpg" 
+                src="1.jpg" 
                 alt="Creative animation showcase" 
                 className="w-full h-full object-cover"
               />

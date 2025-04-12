@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const PortfolioFilters = ({ categories = [], activeFilter, onFilterChange }) => {
+const PortfolioFilters = ({ categories = [], activeFilter, setActiveFilter }) => {
   // Format category name for display (capitalize first letter, replace hyphens with spaces)
   const formatCategoryName = (category) => {
     if (category === 'all') return 'All Projects'
@@ -15,7 +15,7 @@ const PortfolioFilters = ({ categories = [], activeFilter, onFilterChange }) => 
       {categories.map((category) => (
         <button
           key={category}
-          onClick={() => onFilterChange(category)}
+          onClick={() => setActiveFilter(category)}
           className={`relative px-4 py-2 text-sm md:text-base rounded-full transition-colors ${
             activeFilter === category
               ? 'text-white'

@@ -1,5 +1,5 @@
 import AnimatedSection from '../common/AnimatedSection'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const AboutUs = () => {
   const sectionRef = useRef(null)
@@ -109,7 +109,7 @@ const AboutUs = () => {
       section.removeEventListener('touchmove', handleTouch)
       if (cleanupMobileAnimation) cleanupMobileAnimation()
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <section 

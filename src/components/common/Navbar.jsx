@@ -70,14 +70,6 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                 ))}
-                <li>
-                  <Link 
-                    to="/hire-me" 
-                    className="ml-4 inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-full hover:bg-primary-dark transition-colors shadow-sm hover:shadow"
-                  >
-                    Hire Me
-                  </Link>
-                </li>
               </ul>
             </nav>
             

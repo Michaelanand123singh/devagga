@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import AnimatedSection from '../common/AnimatedSection'
-import Head from 'next/head'
-import { JsonLd } from 'react-schemaorg'
+import { Helmet } from 'react-helmet-async'
 
 const industriesData = [
   {
@@ -42,7 +41,7 @@ const IndustryServices = ({ pageTitle = "Animation Services Across Industries",
                            pageDescription = "Specialized animation services tailored for Entertainment, Education, Gaming, and Marketing industries. Professional animation studio delivering custom solutions." }) => {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>{pageTitle} | Animation Studio</title>
         <meta name="description" content={pageDescription} />
         <meta name="keywords" content="animation services, entertainment animation, educational animation, game animation, marketing animation, custom animation, professional animation studio" />
@@ -54,23 +53,24 @@ const IndustryServices = ({ pageTitle = "Animation Services Across Industries",
         <meta property="twitter:title" content={pageTitle} />
         <meta property="twitter:description" content={pageDescription} />
         <link rel="canonical" href="https://youranimationstudio.com/services" />
-      </Head>
-
-      <JsonLd<any>
-        item={{
-          "@context": "https://schema.org",
-          "@type": "Service",
-          "name": "Animation Services",
-          "description": "Specialized animation services across Entertainment, Education, Gaming, and Marketing industries",
-          "provider": {
-            "@type": "Organization",
-            "name": "Your Animation Studio",
-            "url": "https://youranimationstudio.com"
-          },
-          "serviceType": ["Entertainment Animation", "Educational Animation", "Game Animation", "Marketing Animation"],
-          "areaServed": "Worldwide"
-        }}
-      />
+        
+        {/* JSON-LD structured data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Animation Services",
+            "description": "Specialized animation services across Entertainment, Education, Gaming, and Marketing industries",
+            "provider": {
+              "@type": "Organization",
+              "name": "Your Animation Studio",
+              "url": "https://youranimationstudio.com"
+            },
+            "serviceType": ["Entertainment Animation", "Educational Animation", "Game Animation", "Marketing Animation"],
+            "areaServed": "Worldwide"
+          })}
+        </script>
+      </Helmet>
 
       <section className="py-20 bg-dark" id="industry-services" aria-label="Industry Services">
         <div className="container mx-auto px-4">
@@ -127,13 +127,3 @@ const IndustryServices = ({ pageTitle = "Animation Services Across Industries",
 }
 
 export default IndustryServices
-
-// Prerender the page for better SEO
-export async function getStaticProps() {
-  return {
-    props: {
-      pageTitle: "Specialized Animation Services Across Industries",
-      pageDescription: "Professional animation services customized for Entertainment, Education, Gaming, and Marketing industries. High-quality animations tailored to your specific industry needs."
-    }
-  }
-}

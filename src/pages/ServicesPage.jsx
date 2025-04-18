@@ -57,15 +57,15 @@ const ServicesPage = () => {
       features: ['Character Animation', 'Scene Design', 'Storytelling', 'Visual Effects']
     },
     {
-      id: 'education',
-      title: 'Education',
+      id: 'CMS',
+      title: 'CMS',
       icon: '🎓',
       description: 'We develop educational animations that make complex concepts accessible and engaging.',
       features: ['Explainer Videos', 'Interactive Elements', 'Course Visualizations', 'Concept Illustrations']
     },
     {
-      id: 'gaming',
-      title: 'Gaming',
+      id: 'Content-Production',
+      title: 'Content Production',
       icon: '🎮',
       description: 'We create character animations, cutscenes, and visual effects for games across platforms.',
       features: ['Character Animation', 'Environment Design', 'Cutscene Development', 'UI Animation']

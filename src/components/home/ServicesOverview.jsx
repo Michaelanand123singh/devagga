@@ -120,8 +120,8 @@ const ServicesOverview = () => {
                     </div>
                     <Button 
                       to={`/services#${activeService.title.toLowerCase().replace(/\s+/g, '-')}`} 
-                      variant="outline"
-                      size="sm"
+                      
+                     
                     >
                       Learn More
                     </Button>

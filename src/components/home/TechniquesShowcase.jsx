@@ -77,7 +77,7 @@ const TechniquesShowcase = () => {
               </div>
               
               <div className="mt-auto">
-                <Button to="/services" variant="outline">Learn More</Button>
+                <Button to="/services" >Learn More</Button>
               </div>
             </div>
           </AnimatedSection>

@@ -45,7 +45,7 @@ const AnimationExpertise = () => {
                     <span>Explainer videos and infographics</span>
                   </li>
                 </ul>
-                <Button to="/services#2d-animation" variant="outline" size="xs">Learn More</Button>
+                <Button to="/services#2d-animation" >Learn More</Button>
               </div>
             </div>
           </AnimatedSection>
@@ -83,7 +83,7 @@ const AnimationExpertise = () => {
                     <span>Visual effects and simulations</span>
                   </li>
                 </ul>
-                <Button to="/services#3d-animation" variant="outline" size="xs">Learn More</Button>
+                <Button to="/services#3d-animation"  >Learn More</Button>
               </div>
             </div>
           </AnimatedSection>
@@ -121,7 +121,7 @@ const AnimationExpertise = () => {
                     <span>Visual effects and simulations</span>
                   </li>
                 </ul>
-                <Button to="/services#3d-animation" variant="outline" size="xs">Learn More</Button>
+                <Button to="/services#3d-animation" >Learn More</Button>
               </div>
             </div>
           </AnimatedSection>
@@ -159,7 +159,7 @@ const AnimationExpertise = () => {
                     <span>Visual effects and simulations</span>
                   </li>
                 </ul>
-                <Button to="/services#3d-animation" variant="outline" size="xs">Learn More</Button>
+                <Button to="/services#3d-animation" >Learn More</Button>
               </div>
             </div>
           </AnimatedSection>

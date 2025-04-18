@@ -129,9 +129,20 @@ const ServicesPage = () => {
   
   return (
     <div className="pt-20 pb-24 overflow-hidden">
-      {/* Hero Section */}
-      <section className="bg-dark-light py-20 md:py-32 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/10 to-transparent opacity-50"></div>
+      {/* Hero Section with Background Image */}
+      <section 
+        className="py-20 md:py-32 relative bg-dark-light"
+        style={{
+          backgroundImage: 'src = "/Hero/1.jpg"', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-dark-light/70"></div>
+        {/* Additional gradient effect */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-dark/30 to-transparent opacity-80"></div>
         <div className="container mx-auto px-4 relative z-10">
           <ScrollReveal>
             <h1 className="text-center mb-8 text-4xl md:text-5xl lg:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-light to-secondary-light">

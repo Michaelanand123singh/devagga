@@ -113,18 +113,20 @@ const Hero = () => {
         <div className="absolute inset-0">
           {images.map((image, index) => (
             <motion.div
-              key={index}
-              className="absolute inset-0"
-              initial={{ opacity: 0 }}
-              animate={{ 
-                opacity: currentImageIndex === index ? 1 : 0,
-                scale: currentImageIndex === index ? 1 : 1.1,
-              }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-              role="group"
-              aria-label={image.title}
-              aria-hidden={currentImageIndex !== index}
-            >
+            key={index}
+            className="absolute inset-0"
+            initial={{ opacity: 0, x: '100%' }}  // Start from right side
+            animate={{ 
+              opacity: currentImageIndex === index ? 1 : 0,
+              x: currentImageIndex === index ? 0 : '-100%', // Move to left when inactive
+              scale: currentImageIndex === index ? 1 : 1
+            }}
+            exit={{ opacity: 0, x: '100%' }}  // Exit to left side
+            transition={{ duration: 1.2, }}
+            role="group"
+            aria-label={image.title}
+            aria-hidden={currentImageIndex !== index}
+          >
               <img 
                 src={image.src} 
                 alt={image.alt} 

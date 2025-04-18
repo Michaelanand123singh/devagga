@@ -7,7 +7,7 @@ const AnimationExpertise = () => {
       <div className="container mx-auto px-4">
         <AnimatedSection animation="fadeUp">
           <h2 className="text-2xl md:text-3xl font-bold mb-10 text-center">
-            2D and 3D Animation Expertise
+            Our Expertise
           </h2>
         </AnimatedSection>
         
@@ -66,6 +66,82 @@ const AnimationExpertise = () => {
               </div>
               <div className="p-4">
                 <h3 className="text-xl font-bold mb-2">3D Animation</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  Our team excels at creating immersive 3D animations that add depth and realism to your projects with stunning detail, lighting, and movement.
+                </p>
+                <ul className="space-y-1 mb-4 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Character modeling and animation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Product visualization and demonstrations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Visual effects and simulations</span>
+                  </li>
+                </ul>
+                <Button to="/services#3d-animation" variant="outline">Learn More</Button>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Movies */}
+          <AnimatedSection animation="fadeLeft" delay={0.4}>
+            <div className="bg-dark-light rounded-lg overflow-hidden shadow-md">
+              <div className="relative h-48">
+                <img 
+                  src="/assets/images/portfolio/3d-animation-sample.jpg" 
+                  alt="Movies Example" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-light to-transparent"></div>
+                <div className="absolute top-3 left-3 bg-secondary/80 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  Movies
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">Movies</h3>
+                <p className="text-gray-300 text-sm mb-3">
+                  Our team excels at creating immersive 3D animations that add depth and realism to your projects with stunning detail, lighting, and movement.
+                </p>
+                <ul className="space-y-1 mb-4 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Character modeling and animation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Product visualization and demonstrations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-secondary mr-1">•</span>
+                    <span>Visual effects and simulations</span>
+                  </li>
+                </ul>
+                <Button to="/services#3d-animation" variant="outline">Learn More</Button>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          {/* Web Series */}
+          <AnimatedSection animation="fadeLeft" delay={0.4}>
+            <div className="bg-dark-light rounded-lg overflow-hidden shadow-md">
+              <div className="relative h-48">
+                <img 
+                  src="/assets/images/portfolio/3d-animation-sample.jpg" 
+                  alt="Web Series Example" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-light to-transparent"></div>
+                <div className="absolute top-3 left-3 bg-secondary/80 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  Web Series 
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="text-xl font-bold mb-2">Web Series</h3>
                 <p className="text-gray-300 text-sm mb-3">
                   Our team excels at creating immersive 3D animations that add depth and realism to your projects with stunning detail, lighting, and movement.
                 </p>

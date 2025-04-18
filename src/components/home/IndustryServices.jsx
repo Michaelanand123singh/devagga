@@ -13,7 +13,7 @@ const industriesData = [
   },
   {
     id: 2,
-    title: "Education",
+    title: "CMS",
     description: "We develop educational animations and interactive learning experiences that make complex concepts accessible and engaging.",
     icon: "🎓",
     color: "from-blue-500 to-teal-400",
@@ -21,7 +21,7 @@ const industriesData = [
   },
   {
     id: 3,
-    title: "Gaming",
+    title: "Content Production",
     description: "We provide high-end 2D and 3D animations for game development, including character animations, cinematics, and visual effects.",
     icon: "🎮",
     color: "from-green-500 to-emerald-400",

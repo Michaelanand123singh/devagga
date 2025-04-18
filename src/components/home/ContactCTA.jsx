@@ -109,15 +109,6 @@ const ContactCTA = ({
             <AnimatedSection animation="fadeUp" delay={0.2}>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-10">
                 <Button 
-                  to="/contact" 
-                  size="lg" 
-                  variant="secondary" 
-                  className="w-full sm:w-auto"
-                  aria-label="Contact DevAgga Animation Studio"
-                >
-                  Get in Touch
-                </Button>
-                <Button 
                   to="/portfolio" 
                   size="lg" 
                   variant="outline" 

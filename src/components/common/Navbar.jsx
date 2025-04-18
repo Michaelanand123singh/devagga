@@ -121,15 +121,6 @@ const Navbar = () => {
               {navLinks.map((link) => (
                 <MobileNavItem key={link.name} link={link} onClick={closeMenu} />
               ))}
-              <li className="pt-2">
-                <Link 
-                  to="/hire-me" 
-                  className="block py-3 px-4 bg-primary text-white rounded-lg hover:bg-primary-dark transition-colors text-center shadow-sm"
-                  onClick={closeMenu}
-                >
-                  Hire Me
-                </Link>
-              </li>
             </ul>
           </div>
         </div>

@@ -1,14 +1,14 @@
 export const servicesData = {
   specializedServices: [
     {
-      id: 'char-design',
-      title: 'Character Design',
+      id: 'content-manangement',
+      title: 'Content Management',
       icon: '👤',
-      description: 'Custom character design that brings personality and life to your animated projects.'
+      description: 'Let’s grow together through smart content partnerships.'
     },
     {
-      id: 'motion-graphics',
-      title: 'Motion Graphics',
+      id: 'content-produciton',
+      title: 'Content Production',
       icon: '✨',
       description: 'Eye-catching motion graphics for presentations, advertisements, and digital content.'
     },
@@ -31,8 +31,8 @@ export const servicesData = {
       description: 'Seamless integration of different visual elements to create cohesive final outputs.'
     },
     {
-      id: 'rigging',
-      title: 'Character Rigging',
+      id: 'content-creator',
+      title: 'Content Creator',
       icon: '🤖',
       description: 'Professional rigging to prepare characters for smooth and realistic animation.'
     }

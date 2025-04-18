@@ -41,9 +41,9 @@ const Footer = () => {
             <ul className="space-y-2">
               <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">2D Animation</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">3D Animation</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Character Design</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Motion Graphics</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Explainer Videos</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Content Management</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Content Production</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Content Publishing</Link></li>
             </ul>
           </div>
           
@@ -52,8 +52,8 @@ const Footer = () => {
             <h4 className="text-xl font-semibold mb-4">Industries</h4>
             <ul className="space-y-2">
               <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Entertainment</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Education</Link></li>
-              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Gaming</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Movies</Link></li>
+              <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Web Series</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Marketing</Link></li>
               <li><Link to="/services" className="text-gray-300 hover:text-primary-light transition-colors">Corporate</Link></li>
             </ul>

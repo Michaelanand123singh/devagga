@@ -13,14 +13,14 @@ const servicesData = [
   },
   {
     id: 2,
-    title: "Motion Graphics & VFX",
+    title: "CMS",
     description: "Enhance your visual storytelling with dynamic motion graphics and stunning visual effects that capture attention.",
     icon: "✨",
     src: "/Character.png"
   },
   {
     id: 3,
-    title: "Explainer & Educational Videos",
+    title: "Content Production",
     description: "Communicate complex ideas with clarity through engaging animated explainers that educate and inspire your audience.",
     icon: "🎓",
     src: "/assets/images/services/explainer-video.jpg"

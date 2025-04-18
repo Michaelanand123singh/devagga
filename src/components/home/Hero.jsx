@@ -36,28 +36,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Slightly slower for better viewing
-    
-    // Pulse glow animation
-    glowAnimation.start({
-      opacity: [0.4, 0.7, 0.4],
-      scale: [1, 1.05, 1],
-      transition: {
-        duration: 3,
-        ease: "easeInOut",
-        repeat: Infinity,
-      }
-    });
-    
-    // Title animation
-    titleAnimation.start({
-      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-      transition: {
-        duration: 15,
-        ease: "linear",
-        repeat: Infinity,
-      }
-    });
+    }, 5000); // Change image every 5 seconds
     
     return () => clearInterval(interval);
   }, [images.length]);
@@ -109,24 +88,23 @@ const Hero = () => {
         {/* Cinematic overlay effect */}
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 z-10" aria-hidden="true"></div>
         
-        {/* Full-screen image carousel */}
+        {/* Simple left-to-right scrolling image carousel */}
         <div className="absolute inset-0">
           {images.map((image, index) => (
             <motion.div
-            key={index}
-            className="absolute inset-0"
-            initial={{ opacity: 0, x: '100%' }}  // Start from right side
-            animate={{ 
-              opacity: currentImageIndex === index ? 1 : 0,
-              x: currentImageIndex === index ? 0 : '-100%', // Move to left when inactive
-              scale: currentImageIndex === index ? 1 : 1
-            }}
-            exit={{ opacity: 0, x: '100%' }}  // Exit to left side
-            transition={{ duration: 1.2, }}
-            role="group"
-            aria-label={image.title}
-            aria-hidden={currentImageIndex !== index}
-          >
+              key={index}
+              className="absolute inset-0"
+              initial={{ opacity: 0, x: '-100%' }}  // Start from left side
+              animate={{ 
+                opacity: currentImageIndex === index ? 1 : 0,
+                x: currentImageIndex === index ? 0 : '100%'  // Move to right when inactive
+              }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 1.2 }}
+              role="group"
+              aria-label={image.title}
+              aria-hidden={currentImageIndex !== index}
+            >
               <img 
                 src={image.src} 
                 alt={image.alt} 
@@ -155,7 +133,7 @@ const Hero = () => {
           ))}
         </div>
         
-        {/* Content overlay - can add additional content here */}
+        {/* Content overlay */}
         <div className="container mx-auto px-4 z-20 relative">
           {/* Optional: Add content here if needed */}
         </div>

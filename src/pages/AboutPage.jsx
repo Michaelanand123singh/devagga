@@ -23,7 +23,7 @@ const AboutPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <AnimatedSection animation="fadeRight">
               <div className="rounded-lg overflow-hidden">
-                <img src="/assets/images/about/studio.jpg" alt="Our Studio" className="w-full h-auto" />
+                <img src="/Hero/a.jpg" alt="Our Studio" className="w-full h-auto" />
               </div>
             </AnimatedSection>
             

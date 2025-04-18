@@ -1,9 +1,36 @@
-import AnimatedSection from '../common/AnimatedSection'
 import { useEffect, useRef, useState } from 'react'
+import AnimatedSection from '../common/AnimatedSection'
 
 const AboutUs = () => {
   const sectionRef = useRef(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
+
+  // Sample images array - replace with your actual image paths
+  const images = [
+    '/Hero/a.jpg',
+    '/Hero/b.jpg',
+    '/Hero/c.jpg',
+    '/1.jpg',
+    '/2D.jpg',
+    '/3D.jpg',
+    '/about.jpg',
+    '/Character.png',
+    '/sky.png',
+  ]
+
+  // Calculate total number of slides
+  const totalSlides = Math.max(0, Math.ceil(images.length / 3))
+
+  // Function to navigate to previous slide
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1))
+  }
+
+  // Function to navigate to next slide
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1))
+  }
 
   useEffect(() => {
     // Check if device is mobile
@@ -111,6 +138,15 @@ const AboutUs = () => {
     }
   }, [isMobile])
 
+  // Auto-advance slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    
+    return () => clearInterval(timer);
+  }, [currentSlide]);
+
   return (
     <section 
       ref={sectionRef}
@@ -128,42 +164,34 @@ const AboutUs = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <AnimatedSection animation="fadeUp">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Who We Are: A Passion for Storytelling and Cutting-Edge Tech
-          </h2>
-        </AnimatedSection>
+      
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation="fadeRight" delay={0.2}>
-            <div className="prose prose-lg prose-invert max-w-none">
-              <p>
-                We're a creative company fueled by a passion for storytelling that goes beyond the ordinary. Our expert team 
-                consists of talented artists, innovative storytellers, skilled animators, and technical experts who
-                merge the latest technology to deliver unique creative experiences.
-              </p>
-              <p>
-                Our diverse portfolio showcases a wide range of styles, from playful and whimsical to sleek and sophisticated.
-                We believe in the power of animation to captivate, educate, and inspire audiences across various platforms and industries.
-              </p>
-              <p>
-                What sets us apart is our commitment to understanding your vision, goals, and audience. We don't just create animations; 
-                we craft stories that connect, engage, and leave lasting impressions.
-              </p>
-            </div>
-          </AnimatedSection>
-          
-          <AnimatedSection animation="fadeLeft" delay={0.4}>
-            <div className="relative rounded-lg overflow-hidden shadow-xl h-96">
-              <img 
-                src="/about.jpg" 
-                alt="Our team collaborating" 
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/70 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 p-6">
-                <h3 className="text-2xl font-bold mb-2">Our Creative Team</h3>
-                <p className="text-gray-300">Passionate storytellers and technical wizards</p>
+        {/* Image Slider */}
+        <div className="relative">
+          {/* Main Slider */}
+          <AnimatedSection animation="fadeUp" delay={0.2}>
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {/* Render slides in groups of 3 */}
+                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                  <div key={slideIndex} className="w-full flex-shrink-0 flex gap-4">
+                    {images.slice(slideIndex * 3, slideIndex * 3 + 3).map((image, imgIndex) => (
+                      <div key={imgIndex} className="w-1/3 px-2">
+                        <div className="relative rounded-lg overflow-hidden shadow-xl h-64 md:h-96 group">
+                          <img 
+                            src={image} 
+                            alt={`Team member ${slideIndex * 3 + imgIndex + 1}`}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
             </div>
           </AnimatedSection>

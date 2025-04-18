@@ -7,22 +7,22 @@ const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const images = [
     {
-      src: "/1.jpg",
+      src: "/Hero/a.jpg",
       alt: "Creative 3D animation showcase - featured work by DevAgga",
       title: "3D Animation Showcase"
     },
     {
-      src: "/lets.png",
+      src: "/Hero/b.jpg",
       alt: "2D character animation for marketing campaigns",
       title: "Character Animation Sample"
     },
     {
-      src: "/sky.png",
+      src: "/Hero/c.jpg",
       alt: "Cinematic visual effects and environment animation",
       title: "Visual Effects Portfolio"
     },
     {
-      src: "/tomato.png",
+      src: "/1.jpg",
       alt: "Motion graphics for product visualization",
       title: "Product Animation Example"
     },
@@ -97,7 +97,7 @@ const Hero = () => {
               initial={{ opacity: 0, x: '-100%' }}  // Start from left side
               animate={{ 
                 opacity: currentImageIndex === index ? 1 : 0,
-                x: currentImageIndex === index ? 0 : '100%'  // Move to right when inactive
+                x: currentImageIndex === index ? 0 : ''  // Move to right when inactive
               }}
               exit={{ opacity: 0, x: '100%' }}
               transition={{ duration: 1.2 }}
@@ -119,15 +119,6 @@ const Hero = () => {
                   <h3 className="text-2xl font-bold text-white">{image.title}</h3>
                   <p className="text-sm text-gray-300">{image.alt}</p>
                 </div>
-              </div>
-              
-              {/* Studio logo overlay */}
-              <div className="absolute top-4 left-4 z-20">
-                <img 
-                  src="/logo.svg" 
-                  alt="DevAgga Studio" 
-                  className="h-8 w-auto"
-                />
               </div>
             </motion.div>
           ))}

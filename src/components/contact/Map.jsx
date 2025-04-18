@@ -6,10 +6,10 @@ const Map = () => {
   const marker = useRef(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   
-  // Default coordinates - you can change these to your location
-  const [lng] = useState(-74.006);
-  const [lat] = useState(40.7128);
-  const [zoom] = useState(13);
+  // Delhi coordinates from your iframe
+  const [lng] = useState(77.1025);
+  const [lat] = useState(28.7041);
+  const [zoom] = useState(11);
 
   useEffect(() => {
     // Load Google Maps API script dynamically
@@ -22,7 +22,8 @@ const Map = () => {
 
       // Create script element
       const googleMapsScript = document.createElement('script');
-      googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap`;
+      // Replace YOUR_API_KEY with an actual API key
+      googleMapsScript.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
       googleMapsScript.async = true;
       googleMapsScript.defer = true;
       
@@ -35,7 +36,9 @@ const Map = () => {
       return () => {
         // Clean up
         delete window.initMap;
-        document.head.removeChild(googleMapsScript);
+        if (document.head.contains(googleMapsScript)) {
+          document.head.removeChild(googleMapsScript);
+        }
       };
     };
 
@@ -51,28 +54,21 @@ const Map = () => {
           mapTypeControl: true,
           streetViewControl: true,
           fullscreenControl: true,
-          zoomControl: true,
-          styles: [
-            // You can add custom styles here if needed
-            // This is similar to Mapbox's dark style
-            { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
-            { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
-            { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
-          ]
+          zoomControl: true
         };
         
         map.current = new window.google.maps.Map(mapContainer.current, mapOptions);
         
-        // Add marker for your location
+        // Add marker for Delhi location
         marker.current = new window.google.maps.Marker({
           position: { lat: lat, lng: lng },
           map: map.current,
-          title: 'Our Location'
+          title: 'Delhi'
         });
         
         // Add info window
         const infoWindow = new window.google.maps.InfoWindow({
-          content: '<h3>Our Studio</h3><p>Visit us here!</p>'
+          content: '<h3>Delhi</h3><p>The capital of India</p>'
         });
         
         // Open info window when marker is clicked
@@ -91,26 +87,24 @@ const Map = () => {
     
     // Cleanup function
     return () => {
-      // Google Maps doesn't need explicit cleanup
       map.current = null;
       marker.current = null;
     };
-  }, [lng, lat, zoom]);
+  }, [lat, lng, zoom]);
 
   return (
-    <>
+    <div className="relative w-full h-96">
       {!mapLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-          <div className="text-xl text-white">Loading map...</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+          <div className="text-xl">Loading map...</div>
         </div>
       )}
       <div 
         ref={mapContainer} 
-        className="w-full h-full"
-        aria-label="Map showing our location"
-        style={{ width: '100%', height: '100%', minHeight: '400px' }}
+        className="w-full h-full rounded shadow"
+        aria-label="Map showing Delhi location"
       />
-    </>
+    </div>
   );
 };
 

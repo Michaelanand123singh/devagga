@@ -44,20 +44,22 @@ const Animation2D = () => {
   return (
     <div className="py-16 bg-dark">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <AnimatedSection animation="fadeRight">
+        <div className="flex flex-col items-center">
+          {/* Image section - Now on top */}
+          <AnimatedSection animation="fadeDown" className="w-full max-w-4xl mb-12">
             <div className="relative">
               <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-primary/20 blur-xl" />
               <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-secondary/20 blur-xl" />
               <img 
-                src="/assets/images/2d-animation-example.jpg" 
+                src="/2D.jpg" 
                 alt="2D Animation"
                 className="rounded-lg relative z-10 w-full h-auto object-cover shadow-lg"
               />
             </div>
           </AnimatedSection>
           
-          <AnimatedSection animation="fadeLeft">
+          {/* Content section - Now below the image */}
+          <AnimatedSection animation="fadeUp" className="w-full max-w-3xl text-center">
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">2D Animation Excellence</h2>
             <p className="text-gray-300 mb-8">
               We specialize in creating captivating 2D animations that tell your story with clarity and style. 
@@ -65,21 +67,22 @@ const Animation2D = () => {
               educate, and entertain your audience.
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+            {/* Features section - Now in a 2x2 grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
               {features.map((feature, index) => (
-                <div key={index} className="flex items-start">
-                  <div className="text-primary-light mr-4 mt-1">
+                <div key={index} className="flex flex-col items-center text-center">
+                  <div className="text-primary-light mb-3">
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="font-semibold text-lg mb-1">{feature.title}</h3>
-                    <p className="text-gray-400 text-sm">{feature.description}</p>
+                    <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
                   </div>
                 </div>
               ))}
             </div>
             
-            <Button to="/contact" size="lg">Discuss Your 2D Project</Button>
+            <Button to="/contact" size="lg" className="mx-auto">Discuss Your 2D Project</Button>
           </AnimatedSection>
         </div>
       </div>

@@ -10,7 +10,7 @@ const TechniquesShowcase = () => {
       id: 'motion',
       title: 'Motion Capture',
       description: 'We utilize innovative motion capture techniques, including optical systems, to capture natural movement and translate it into fluid animations.',
-      image: '/assets/images/techniques/motion-capture.jpg',
+      image: '/Hero/a.jpg',
       features: [
         'Advanced 3D tracking systems',
         'Realistic character movement',
@@ -22,7 +22,7 @@ const TechniquesShowcase = () => {
       id: 'lighting',
       title: 'Dynamic Lighting',
       description: 'Our team specializes in creating dynamic lighting environments that add depth, mood, and visual interest to every animation project.',
-      image: '/assets/images/techniques/dynamic-lighting.jpg',
+      image: '/Hero/b.jpg',
       features: [
         'Volumetric lighting effects',
         'Real-time light simulation',
@@ -34,7 +34,7 @@ const TechniquesShowcase = () => {
       id: 'procedural',
       title: 'Procedural Animation',
       description: 'We implement cutting-edge procedural animation techniques that allow for adaptive, physics-based movement and effects.',
-      image: '/assets/images/techniques/procedural-animation.jpg',
+      image: '/Hero/c.jpg',
       features: [
         'Physics-based simulations',
         'Adaptive character movement',

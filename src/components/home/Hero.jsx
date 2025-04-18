@@ -1,7 +1,7 @@
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect, useState, useRef } from 'react'
 import Button from '../common/Button'
-import { Helmet } from 'react-helmet-async' // Import for meta tags
+import { Helmet } from 'react-helmet-async'
 
 const Hero = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -29,13 +29,14 @@ const Hero = () => {
   ];
   
   const glowAnimation = useAnimation();
+  const titleAnimation = useAnimation();
   const sectionRef = useRef(null);
   
   // Auto-scroll images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
+    }, 5000); // Slightly slower for better viewing
     
     // Pulse glow animation
     glowAnimation.start({
@@ -48,6 +49,16 @@ const Hero = () => {
       }
     });
     
+    // Title animation
+    titleAnimation.start({
+      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+      transition: {
+        duration: 15,
+        ease: "linear",
+        repeat: Infinity,
+      }
+    });
+    
     return () => clearInterval(interval);
   }, [images.length]);
 
@@ -56,13 +67,10 @@ const Hero = () => {
 
   return (
     <>
-      {/* SEO-specific meta tags */}
       <Helmet>
         <title>DevAgga - Creative Animation Solutions | Professional Animation Studio</title>
         <meta name="description" content="Transform your ideas into captivating visual stories with DevAgga's cutting-edge animation services. We deliver immersive experiences that resonate with audiences." />
         <link rel="canonical" href="https://devagga.com/" />
-        
-        {/* JSON-LD structured data for the current page */}
         <script type="application/ld+json">
           {`
             {
@@ -95,131 +103,73 @@ const Hero = () => {
 
       <section 
         ref={sectionRef}
-        className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-dark"
+        className="relative h-screen w-full flex items-center overflow-hidden bg-black"
         aria-label="Creative Animation Solutions Hero Section"
-        itemScope
-        itemType="https://schema.org/CreativeWork"
       >
-        {/* Animated background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark/40 to-dark z-0" aria-hidden="true"></div>
+        {/* Cinematic overlay effect */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 z-10" aria-hidden="true"></div>
         
-        {/* Background grid pattern */}
-        <div className="absolute inset-0 bg-[url('/assets/grid-pattern.svg')] opacity-20 z-0" aria-hidden="true"></div>
-
-        <div className="container mx-auto px-4 z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        {/* Full-screen image carousel */}
+        <div className="absolute inset-0">
+          {images.map((image, index) => (
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              key={index}
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ 
+                opacity: currentImageIndex === index ? 1 : 0,
+                scale: currentImageIndex === index ? 1 : 1.1,
+              }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
+              role="group"
+              aria-label={image.title}
+              aria-hidden={currentImageIndex !== index}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" itemProp="headline">
-                <span className="block">Bringing Imagination to</span>
-                <span className="gradient-text">Life: Creative Animation</span>
-                <span className="block">Solutions</span>
-              </h1>
-              <p className="text-lg text-gray-300 mb-8 max-w-xl" itemProp="description">
-                We transform ideas into captivating visual stories through cutting-edge animation, delivering immersive experiences that resonate with audiences.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button to="/contact" size="lg" aria-label="Get Started with DevAgga Animation Services">Get Started</Button>
-                <Button to="/portfolio" variant="outline" size="lg" aria-label="View DevAgga Animation Portfolio">View Our Work</Button>
+              <img 
+                src={image.src} 
+                alt={image.alt} 
+                title={image.title}
+                className="w-full h-full object-cover object-center"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+              
+              {/* Cinematic text overlay */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 text-left bg-gradient-to-t from-black to-transparent z-20">
+                <div className="container mx-auto">
+                  <h3 className="text-2xl font-bold text-white">{image.title}</h3>
+                  <p className="text-sm text-gray-300">{image.alt}</p>
+                </div>
               </div>
               
-              {/* Hidden schema.org elements for better SEO */}
-              <meta itemProp="keywords" content="creative animation, 2D animation, 3D animation, motion graphics, visual effects, character animation" />
-              <meta itemProp="creator" content="DevAgga Animation Studio" />
+              {/* Studio logo overlay */}
+              <div className="absolute top-4 left-4 z-20">
+                <img 
+                  src="/logo.svg" 
+                  alt="DevAgga Studio" 
+                  className="h-8 w-auto"
+                />
+              </div>
             </motion.div>
-
-            <div className="relative" itemProp="image">
-              {/* Glow effect behind the image */}
-              <motion.div 
-                className="absolute inset-0 -m-6 rounded-2xl bg-primary blur-3xl"
-                animate={glowAnimation}
-                style={{ zIndex: 1 }}
-                aria-hidden="true"
-              ></motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="relative"
-                style={{ zIndex: 2 }}
-              >
-                <div 
-                  className="relative h-[400px] w-full lg:h-[500px] rounded-lg overflow-hidden shadow-2xl"
-                  role="region"
-                  aria-label="Animation showcase slideshow"
-                  aria-roledescription="carousel"
-                >
-                  {/* Auto-scrolling images */}
-                  {images.map((image, index) => (
-                    <motion.div
-                      key={index}
-                      className="absolute inset-0"
-                      initial={{ opacity: 0 }}
-                      animate={{ 
-                        opacity: currentImageIndex === index ? 1 : 0,
-                        scale: currentImageIndex === index ? 1 : 1.05,
-                      }}
-                      transition={{ duration: 1, ease: "easeInOut" }}
-                      role="group"
-                      aria-label={image.title}
-                      aria-hidden={currentImageIndex !== index}
-                    >
-                      <img 
-                        src={image.src || "/assets/images/placeholder.jpg"} 
-                        alt={image.alt} 
-                        title={image.title}
-                        className="w-full h-full object-cover"
-                        loading={index === 0 ? "eager" : "lazy"}
-                        itemProp={index === 0 ? "primaryImageOfPage" : "image"}
-                      />
-                    </motion.div>
-                  ))}
-                  
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent" aria-hidden="true"></div>
-                  
-                  {/* Image pagination indicators */}
-                  <div 
-                    className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"
-                    role="tablist"
-                    aria-label="Animation showcase navigation"
-                  >
-                    {images.map((image, index) => (
-                      <button
-                        key={index}
-                        className={`w-2 h-2 rounded-full ${
-                          currentImageIndex === index ? "bg-white" : "bg-white/40"
-                        }`}
-                        onClick={() => setCurrentImageIndex(index)}
-                        aria-label={`View ${image.title}`}
-                        aria-selected={currentImageIndex === index}
-                        role="tab"
-                        tabIndex={currentImageIndex === index ? 0 : -1}
-                      />
-                    ))}
-                  </div>
-                </div>
-                
-                {/* Floating elements */}
-                <motion.div 
-                  className="absolute -top-10 -right-10 w-24 h-24 bg-primary rounded-full opacity-30"
-                  animate={{ y: [0, -15, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden="true"
-                ></motion.div>
-                <motion.div 
-                  className="absolute -bottom-5 -left-5 w-16 h-16 bg-secondary rounded-full opacity-20"
-                  animate={{ y: [0, 15, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  aria-hidden="true"
-                ></motion.div>
-              </motion.div>
-            </div>
-          </div>
+          ))}
+        </div>
+        
+        {/* Content overlay - can add additional content here */}
+        <div className="container mx-auto px-4 z-20 relative">
+          {/* Optional: Add content here if needed */}
+        </div>
+        
+        {/* Navigation dots */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3 z-30">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              className={`w-3 h-3 rounded-full ${
+                currentImageIndex === index ? "bg-white" : "bg-white/40"
+              } transition-all duration-300`}
+              onClick={() => setCurrentImageIndex(index)}
+              aria-label={`View slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
     </>
